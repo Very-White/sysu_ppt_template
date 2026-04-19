@@ -489,12 +489,12 @@ pre code {
   bottom: 36px;
   left: 20px;
   z-index: 50;
-  opacity: 0.5;
+  opacity: 0.8;
   pointer-events: none;
 }
 
 .sysu-watermark img {
-  height: 120px;
+  height: 110px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
