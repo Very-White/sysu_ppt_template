@@ -195,19 +195,23 @@ li::marker {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
+  width: calc(100% + 120px);
+  height: 50%;
+  margin-top: 10%;
+  margin-bottom: auto;
+  margin-left: -60px;
   background: var(--sysu-green);
 }
 
 .slide-section-divider h1 {
   color: var(--sysu-white);
-  font-size: 2.2em;
+  font-size: 1.6em;
   text-align: center;
   border-bottom: none;
 }
 
 .slide-section-divider .section-number {
-  font-size: 3em;
+  font-size: 2.2em;
   color: rgba(255, 255, 255, 0.3);
   font-weight: 700;
   margin-bottom: 10px;
