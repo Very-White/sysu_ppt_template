@@ -1,0 +1,180 @@
+/* ═══════════════════════════════════════════════════════════════
+   SYSU HTML PPT Template - Layout Utilities
+   自由布局：左图右文、左右分栏、三栏等
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Two Column: 50/50 ─── */
+.split-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── Two Column: 40/60 ─── */
+.split-40-60 {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── Two Column: 60/40 ─── */
+.split-60-40 {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── Two Column: 30/70 ─── */
+.split-30-70 {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── Two Column: 70/30 ─── */
+.split-70-30 {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── Left Image, Right Text ─── */
+.layout-img-left-text-right {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.layout-img-left-text-right img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.layout-img-left-text-right .text-content h3 {
+  margin-top: 0;
+  font-size: 1em;
+}
+
+/* ─── Left Text, Right Image ─── */
+.layout-text-left-img-right {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.layout-text-left-img-right img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.layout-text-left-img-right .text-content h3 {
+  margin-top: 0;
+  font-size: 1em;
+}
+
+/* ─── Three Columns ─── */
+.split-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* ─── Vertical Center Content ─── */
+.vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.vcenter > *:first-child {
+  margin-top: auto;
+}
+
+.vcenter > *:last-child {
+  margin-bottom: auto;
+}
+
+/* ─── Full Width Image ─── */
+.full-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+/* ─── Card Grid ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--sysu-block-bg, #F5F5F0);
+  border-radius: 8px;
+  padding: 20px;
+  border-top: 4px solid var(--sysu-green, #005826);
+}
+
+.card h4 {
+  margin: 0 0 8px 0;
+  color: var(--sysu-green, #005826);
+  font-size: 0.85em;
+}
+
+.card p {
+  font-size: 0.7em;
+  margin: 0;
+  color: #555;
+}
+
+/* ─── Highlight Box (alertbox / simplebox / successbox) ─── */
+.alert-box {
+  border: 2px solid #D70000;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.85em;
+}
+
+.simple-box {
+  border: 2px solid #005826;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.85em;
+}
+
+.success-box {
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.85em;
+}
+
+/* ─── Responsive (for smaller viewports) ─── */
+@media (max-width: 800px) {
+  .split-50,
+  .split-40-60,
+  .split-60-40,
+  .split-30-70,
+  .split-70-30,
+  .layout-img-left-text-right,
+  .layout-text-left-img-right,
+  .split-3 {
+    grid-template-columns: 1fr;
+  }
+}

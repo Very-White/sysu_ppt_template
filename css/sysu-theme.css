@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+:root {
+  --sysu-green: #005826;
+  --sysu-green-dark: #054719;
+  --sysu-red: #D70000;
+  --sysu-black: #000000;
+  --sysu-white: #FFFFFF;
+  --sysu-gray: #565A5C;
+  --sysu-block-bg: #F5F5F0;
+  --sysu-code-bg: #F2F2EE;
+  --sysu-code-green: #009900;
+  --sysu-code-gray: #808080;
+  --sysu-code-purple: #9400D2;
+  --font-size: 28px;
+  --main-font: 'Noto Sans SC', 'Microsoft YaHei', Arial, sans-serif;
+  --heading-font: 'Noto Sans SC', 'Microsoft YaHei', Arial, sans-serif;
+  --main-color: var(--sysu-black);
+  --heading-color: var(--sysu-green);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+  font-family: var(--main-font);
+  color: var(--main-color);
+  font-size: var(--font-size);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Slide Container
+   ═══════════════════════════════════════════════════════════════ */
+
+#slide-deck {
+  width: 1280px;
+  height: 720px;
+  background: var(--sysu-white);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Slide (each page)
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide {
+  width: 100%;
+  height: 100%;
+  padding: 60px 60px 40px 60px;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.slide.active {
+  display: flex;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Typography
+   ═══════════════════════════════════════════════════════════════ */
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  text-transform: none;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.3em; border-bottom: 3px solid var(--sysu-green); padding-bottom: 10px; }
+h3 { font-size: 1.1em; }
+
+a {
+  color: var(--sysu-green);
+  text-decoration: underline;
+}
+
+strong {
+  color: var(--sysu-red);
+  font-weight: 700;
+}
+
+em {
+  color: var(--sysu-red);
+  font-style: normal;
+  font-weight: 700;
+}
+
+ul, ol {
+  display: block;
+  margin: 0.3em 0 0.3em 1.5em;
+}
+
+li {
+  margin: 0.2em 0;
+}
+
+li::marker {
+  color: var(--sysu-red);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Title Page
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide-title-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0;
+}
+
+.slide-title-page .title-logo {
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+.slide-title-page h1 {
+  font-size: 2em;
+  color: var(--sysu-green);
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+
+.slide-title-page .subtitle {
+  font-size: 1.1em;
+  color: var(--sysu-gray);
+  margin-bottom: 30px;
+}
+
+.slide-title-page .author-info {
+  font-size: 0.75em;
+  color: var(--sysu-gray);
+  line-height: 1.8;
+}
+
+.slide-title-page .author-info a {
+  color: var(--sysu-green);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TOC Page
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide-toc h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  font-size: 0.85em;
+  padding: 8px 20px;
+  margin: 4px 0;
+  border-left: 4px solid var(--sysu-green);
+  background: var(--sysu-block-bg);
+  color: var(--sysu-green-dark);
+}
+
+.toc-list li.current {
+  background: var(--sysu-green);
+  color: var(--sysu-white);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Section Divider (章节页)
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide-section-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  background: var(--sysu-green);
+}
+
+.slide-section-divider h1 {
+  color: var(--sysu-white);
+  font-size: 2.2em;
+  text-align: center;
+  border-bottom: none;
+}
+
+.slide-section-divider .section-number {
+  font-size: 3em;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Blocks
+   ═══════════════════════════════════════════════════════════════ */
+
+.block {
+  margin: 10px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.block .block-title {
+  padding: 8px 16px;
+  color: var(--sysu-white);
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+.block .block-body {
+  padding: 10px 16px;
+  background: var(--sysu-white);
+  font-size: 0.82em;
+}
+
+.block-normal .block-title { background: var(--sysu-green); }
+.block-alert .block-title { background: var(--sysu-red); }
+.block-example .block-title { background: var(--sysu-green-dark); }
+
+/* ═══════════════════════════════════════════════════════════════
+   Table
+   ═══════════════════════════════════════════════════════════════ */
+
+table {
+  margin: 15px auto;
+  border-collapse: collapse;
+  font-size: 0.72em;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid #CCC;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+table th {
+  background: var(--sysu-green);
+  color: var(--sysu-white);
+  font-weight: 700;
+}
+
+table tr:nth-child(even) {
+  background: #F8F8F8;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Figure
+   ═══════════════════════════════════════════════════════════════ */
+
+figure {
+  text-align: center;
+  margin: 15px 0;
+}
+
+figure img {
+  max-height: 400px;
+  border: none;
+  box-shadow: none;
+}
+
+figure figcaption {
+  font-size: 0.7em;
+  color: var(--sysu-gray);
+  margin-top: 8px;
+}
+
+figure .source {
+  font-size: 0.65em;
+  color: var(--sysu-green);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Code
+   ═══════════════════════════════════════════════════════════════ */
+
+pre {
+  width: 100%;
+  font-size: 0.6em;
+  line-height: 1.4;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 6px;
+  background: var(--sysu-code-bg);
+  box-shadow: none;
+  border: 1px solid #DDD;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', Consolas, monospace;
+  background: var(--sysu-code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Algorithm / Pseudocode
+   ═══════════════════════════════════════════════════════════════ */
+
+.algorithm-box {
+  background: var(--sysu-code-bg);
+  border: 1px solid #DDD;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72em;
+  line-height: 1.6;
+}
+
+.algorithm-box .algo-title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--sysu-green);
+}
+
+.algorithm-box .algo-line {
+  padding: 1px 0;
+}
+
+.algorithm-box .algo-keyword {
+  color: #C70078;
+  font-weight: 700;
+}
+
+.algorithm-box .algo-comment {
+  color: var(--sysu-code-green);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   KaTeX
+   ═══════════════════════════════════════════════════════════════ */
+
+.katex-display {
+  font-size: 0.85em;
+  margin: 15px 0;
+}
+
+.katex {
+  font-size: 1em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Footer (母版底栏)
+   ═══════════════════════════════════════════════════════════════ */
+
+.sysu-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  font-size: 11px;
+  height: 28px;
+  z-index: 100;
+}
+
+.slide.no-footer .sysu-footer {
+  display: none;
+}
+
+.sysu-footer .footer-author {
+  width: 33.33%;
+  background: var(--sysu-black);
+  color: var(--sysu-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sysu-footer .footer-title {
+  width: 33.33%;
+  background: var(--sysu-green);
+  color: var(--sysu-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sysu-footer .footer-date {
+  width: 33.33%;
+  background: var(--sysu-black);
+  color: var(--sysu-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Header (母版顶栏)
+   ═══════════════════════════════════════════════════════════════ */
+
+.sysu-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: var(--sysu-black);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  padding: 0 20px;
+}
+
+.slide.no-header .sysu-header {
+  display: none;
+}
+
+.sysu-header .header-section {
+  color: var(--sysu-white);
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sysu-header .header-logo {
+  height: 36px;
+  margin-right: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Progress Bar
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 101;
+}
+
+.slide-progress-bar {
+  height: 100%;
+  background: var(--sysu-green);
+  transition: width 0.3s ease;
+  width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Watermark
+   ═══════════════════════════════════════════════════════════════ */
+
+.sysu-watermark {
+  position: absolute;
+  bottom: 36px;
+  left: 20px;
+  z-index: 50;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.sysu-watermark img {
+  height: 120px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Footnote
+   ═══════════════════════════════════════════════════════════════ */
+
+.footnote {
+  font-size: 0.55em;
+  color: var(--sysu-gray);
+  vertical-align: super;
+}
+
+.footnote-block {
+  margin-top: 15px;
+  font-size: 0.6em;
+  color: var(--sysu-gray);
+  border-top: 1px solid #DDD;
+  padding-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   References
+   ═══════════════════════════════════════════════════════════════ */
+
+.references-list {
+  font-size: 0.65em;
+  line-height: 1.8;
+}
+
+.references-list li {
+  margin: 3px 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Overview Mode
+   ═══════════════════════════════════════════════════════════════ */
+
+#slide-deck.overview-mode {
+  width: auto !important;
+  height: auto !important;
+  transform: none !important;
+  position: static !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  background: #222;
+  overflow-y: auto;
+}
+
+#slide-deck.overview-mode .slide {
+  display: flex !important;
+  width: 320px;
+  height: 180px;
+  transform: scale(1);
+  position: relative;
+  cursor: pointer;
+  font-size: 7px;
+  border: 2px solid transparent;
+}
+
+#slide-deck.overview-mode .slide:hover {
+  border-color: var(--sysu-green);
+}
+
+#slide-deck.overview-mode .sysu-header,
+#slide-deck.overview-mode .sysu-footer,
+#slide-deck.overview-mode .slide-progress {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Print / PDF
+   ═══════════════════════════════════════════════════════════════ */
+
+@media print {
+  body {
+    background: white;
+    overflow: visible;
+  }
+
+  #slide-deck {
+    transform: none !important;
+    position: static !important;
+    width: 1280px;
+    height: 720px;
+  }
+
+  .slide {
+    display: flex !important;
+    page-break-after: always;
+    position: relative;
+    break-inside: avoid;
+  }
+
+  .sysu-footer,
+  .sysu-header,
+  .slide-progress {
+    display: flex !important;
+  }
+}
