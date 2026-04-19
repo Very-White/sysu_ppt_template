@@ -61,7 +61,32 @@
 
     const progress = document.createElement('div');
     progress.className = 'slide-progress';
-    progress.innerHTML = '<div class="slide-progress-bar"></div>';
+
+    var sections = [];
+    var currentSection = null;
+    slides.forEach(function (slide, idx) {
+      var title = slide.getAttribute('data-section-title');
+      if (!title) return;
+      if (!currentSection || currentSection.title !== title) {
+        currentSection = { title: title, start: idx, count: 0, indices: [] };
+        sections.push(currentSection);
+      }
+      currentSection.count++;
+      currentSection.indices.push(idx);
+    });
+
+    var sectionsHtml = sections.map(function (sec) {
+      var dots = '';
+      for (var i = 0; i < sec.count; i++) {
+        dots += '<span class="dot" data-slide-index="' + sec.indices[i] + '"></span>';
+      }
+      return '<div class="progress-section">' +
+        '<div class="section-label">' + sec.title + '</div>' +
+        '<div class="section-dots">' + dots + '</div>' +
+        '</div>';
+    }).join('');
+
+    progress.innerHTML = '<div class="progress-sections">' + sectionsHtml + '</div>';
     deck.appendChild(progress);
 
     if (config.watermark) {
@@ -119,10 +144,17 @@
   }
 
   function updateProgress() {
-    var bar = document.querySelector('.slide-progress-bar');
-    if (!bar || slides.length <= 1) return;
-    var pct = ((currentSlide) / (slides.length - 1)) * 100;
-    bar.style.width = pct + '%';
+    var dots = document.querySelectorAll('.slide-progress .dot');
+    if (dots.length === 0) return;
+    dots.forEach(function (dot) {
+      dot.classList.remove('active', 'passed');
+      var idx = parseInt(dot.getAttribute('data-slide-index'), 10);
+      if (idx === currentSlide) {
+        dot.classList.add('active');
+      } else if (idx < currentSlide) {
+        dot.classList.add('passed');
+      }
+    });
   }
 
   function highlightTOC() {
