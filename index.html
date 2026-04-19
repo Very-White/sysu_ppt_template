@@ -20,7 +20,7 @@
 <div
   id="slide-deck"
   data-sysu-config
-  data-author="Nelson Cheung"
+  data-author="Very-White"
   data-title="中山大学PPT模板"
   data-date=""
   data-logo="libs/sysu_logo.png"
@@ -36,10 +36,9 @@
       <h1>中山大学PPT模板</h1>
       <div class="subtitle">使用 HTML 制作 PPT</div>
       <div class="author-info">
-        Nelson Cheung<br>
-        <a href="mailto:zhangjunyu@nelson-cheung.cn">zhangjunyu@nelson-cheung.cn</a><br>
-        <a href="https://nelson-cheung.cn">nelson-cheung.cn</a><br>
-        <small>License: <a href="https://license.coscl.org.cn/MulanPSL2/">MulanPSL-2.0</a></small>
+        Very-White<br>
+        <a href="https://github.com/Very-White">github.com/Very-White</a><br>
+        <small>Based on <a href="https://github.com/NelsonCheung-cn/sysu-html-ppt-template">Nelson Cheung's template</a> · License: <a href="https://license.coscl.org.cn/MulanPSL2/">MulanPSL-2.0</a></small>
       </div>
     </div>
   </div>
@@ -71,13 +70,15 @@
   <div class="slide" data-section-title="引言">
     <h2>写在前面</h2>
     <p>
-      本模板基于
-      <a href="https://www.overleaf.com/latex/templates/presentacion-unal/nzfkbkgnctfp">Presentación UNAL</a>，
-      <a href="https://github.com/yxnchen/sysu-beamer-template">SYSU Beamer Template</a>，
-      <a href="https://www.overleaf.com/latex/templates/thu-beamer-theme/vwnqmzndvwyb">THU Beamer Theme</a>，
-      做出如下修改。
+      本模板 fork 自
+      <a href="https://github.com/NelsonCheung-cn/sysu-html-ppt-template">Nelson Cheung 的 SYSU HTML PPT 模板</a>，
+      并在其基础上做了修改和增强。原始模板灵感来源于
+      <a href="https://www.overleaf.com/latex/templates/presentacion-unal/nzfkbkgnctfp">Presentación UNAL</a>、
+      <a href="https://github.com/yxnchen/sysu-beamer-template">SYSU Beamer Template</a>
+      和 <a href="https://www.overleaf.com/latex/templates/thu-beamer-theme/vwnqmzndvwyb">THU Beamer Theme</a>。
     </p>
     <ul>
+      <li>在原模板基础上新增 PPTX 导出脚本（Playwright 截图 + python-pptx 生成），支持保留母版元素（进度条、水印等）。</li>
       <li>去除背景的水印图片，背景水印图片会导致页面切换时产生屏闪现象。</li>
       <li>基于 Presentación UNAL 的排版风格，使用 SYSU Beamer Template 的颜色主题，采用 THU Beamer Theme 和 Presentación UNAL 的内容进行测试。</li>
       <li>本模板使用 MulanPSL-2.0 开源许可协议。</li>

@@ -165,6 +165,34 @@
 
 浏览器中按 `Ctrl+P`，选择"另存为 PDF"。每张 slide 自动分页。
 
+## 导出 PPTX
+
+使用 `export_to_pptx.py` 脚本，将每页 slide 截图后生成 PPTX 文件（图片格式，不可编辑文字）。
+
+### 环境准备（仅需一次）
+
+```bash
+conda create -n sysu-ppt-export python=3.11 -y
+conda activate sysu-ppt-export
+pip install playwright python-pptx -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+脚本使用系统已安装的 Edge 浏览器，无需额外下载 Chromium。
+
+### 使用方法
+
+```bash
+conda activate sysu-ppt-export
+python export_to_pptx.py                         # 默认 index.html -> output.pptx
+python export_to_pptx.py -i my.html -o result.pptx  # 指定输入输出
+```
+
+### 导出说明
+
+- 脚本通过 Playwright 启动 Edge，逐页截图（2x 分辨率），再通过 python-pptx 生成 16:9 PPTX
+- 母版元素（进度条、顶栏、底栏、水印）均会保留在截图中
+- 依赖：`playwright`、`python-pptx`（见 `requirements.txt`）
+
 ## 许可
 
 [MulanPSL-2.0](https://license.coscl.org.cn/MulanPSL2/)
