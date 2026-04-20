@@ -4,20 +4,41 @@
 
 无任何前端框架依赖，纯 HTML 实现。
 
+## 效果演示
+
+<video src="演示.mp4" autoplay loop muted playsinline width="100%"></video>
+
 ## 快速开始
 
-双击 `index.html` 在浏览器中打开即可。推荐 Chrome 或 Edge。
+由于模板将幻灯片内容拆分到多个 `sections/*.html` 文件，**不能直接双击 `index.html` 打开**。需要启动本地 HTTP 服务器：
+
+```bash
+python -m http.server 8000
+# 然后访问 http://localhost:8000
+```
+
+或者使用 VS Code 的 Live Server 插件。推荐 Chrome 或 Edge 浏览器。
 
 ## 项目结构
 
 ```
-├── index.html            # PPT 内容（编辑此文件）
+├── index.html            # PPT 入口（配置与脚本引用）
+├── sections/             # 幻灯片内容（分章节存放）
+│   ├── 00-title.html     # 标题页 + 目录
+│   ├── 01-intro.html     # 引言
+│   ├── 02-examples.html  # 基础功能展示
+│   ├── 03-advanced.html  # 高级功能展示
+│   └── 04-end.html       # 结尾与参考文献
 ├── css/
 │   ├── sysu-theme.css    # 主题样式、颜色、母版组件
 │   └── sysu-layouts.css  # 布局工具类（分栏、卡片、图文混排）
 ├── js/
-│   └── sysu-slide.js     # 幻灯片引擎（导航、缩放、母版注入）
+│   ├── sysu-slide.js     # 幻灯片引擎（导航、缩放、母版注入）
+│   └── section-loader.js # 分文件加载器
 ├── libs/                 # 图片资源（logo 等）
+├── export_to_pptx.py     # PPTX 导出脚本
+├── requirements.txt      # Python 依赖
+├── 演示.mp4              # 效果演示视频
 └── README.md
 ```
 
@@ -25,7 +46,7 @@
 
 ### 添加一张新 slide
 
-在 `index.html` 的 `#slide-deck` 内添加：
+在对应的 `sections/*.html` 文件中添加 slide 代码块，例如：
 
 ```html
 <div class="slide" data-section-title="章节名">
@@ -33,6 +54,8 @@
   <p>内容</p>
 </div>
 ```
+
+如果要新增章节，还需要在 `js/section-loader.js` 的 `SECTIONS` 数组中追加新的文件路径。
 
 ### 修改母版信息
 
@@ -161,13 +184,11 @@
 | F | 全屏 |
 | O | 总览模式 |
 
-## 导出 PDF
-
-浏览器中按 `Ctrl+P`，选择"另存为 PDF"。每张 slide 自动分页。
-
 ## 导出 PPTX
 
-使用 `export_to_pptx.py` 脚本，将每页 slide 截图后生成 PPTX 文件（图片格式，不可编辑文字）。
+使用 `export_to_pptx.py` 脚本，将每页 slide 截图后生成 PPTX 文件。
+
+> ⚠️ 注意：导出的 PPTX 为静态图片格式，每页 slide 是一张截图，**不支持动画效果**，文字也不可编辑。
 
 ### 环境准备（仅需一次）
 

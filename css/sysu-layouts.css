@@ -83,6 +83,25 @@
   font-size: 1em;
 }
 
+/* ─── Top Image, Bottom Text ─── */
+.layout-img-top-text-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.layout-img-top-text-bottom img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.layout-img-top-text-bottom .text-content h3 {
+  margin-top: 0;
+  font-size: 1em;
+}
+
 /* ─── Three Columns ─── */
 .split-3 {
   display: grid;
@@ -155,6 +174,7 @@
   padding: 12px 16px;
   margin: 10px 0;
   font-size: 0.85em;
+  background: var(--sysu-white);
 }
 
 .success-box {
@@ -163,6 +183,7 @@
   padding: 12px 16px;
   margin: 10px 0;
   font-size: 0.85em;
+  background: var(--sysu-white);
 }
 
 /* ─── Responsive (for smaller viewports) ─── */

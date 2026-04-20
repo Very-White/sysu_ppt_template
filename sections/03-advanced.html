@@ -1,0 +1,138 @@
+<div class="slide no-header no-footer" data-section-title="高级功能">
+  <div class="slide-section-divider">
+    <div class="section-number">03</div>
+    <h1>高级功能</h1>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>左图右文布局</h2>
+  <p style="font-size:0.7em; color:#888; margin-bottom:15px;">使用 <code>.layout-img-left-text-right</code> 类实现左图右文布局。</p>
+  <div class="layout-img-left-text-right">
+    <img src="libs/sysu_big_logo.jpeg" alt="SYSU">
+    <div class="text-content">
+      <h3>中山大学</h3>
+      <p>中山大学（Sun Yat-sen University），简称"中大"，由中华人民共和国教育部直属，是教育部、国家国防科技工业局和广东省共建的综合性全国重点大学。</p>
+      <ul>
+        <li>1924年创办</li>
+        <li>"双一流"建设高校</li>
+        <li>广州、珠海、深圳三地办学</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>左文右图布局</h2>
+  <div class="layout-text-left-img-right">
+    <div class="text-content">
+      <h3>自由排版</h3>
+      <p>使用 CSS Grid/Flexbox 可以轻松实现各种布局组合，远比 LaTeX Beamer 灵活。</p>
+      <ul>
+        <li>左图右文 / 左文右图</li>
+        <li>自定义比例分栏</li>
+        <li>卡片式布局</li>
+        <li>响应式适配</li>
+      </ul>
+    </div>
+    <img src="libs/sysu_logo.png" alt="SYSU Logo">
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>上图下文布局</h2>
+  <p style="font-size:0.7em; color:#888; margin-bottom:15px;">使用 <code>.layout-img-top-text-bottom</code> 类实现上图下文布局。</p>
+  <div class="layout-img-top-text-bottom">
+    <img src="libs/sysu_big_logo.jpeg" alt="SYSU">
+    <div class="text-content">
+      <h3>中山大学</h3>
+      <p>中山大学由孙中山先生亲手创办，有着一百多年办学传统。作为中国教育部直属高校，通过部省共建，中山大学已经成为一所国内一流、国际知名的现代综合性大学。</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>卡片布局</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Block 区块</h4>
+      <p>支持普通、警告、示例三种风格的 block 区块样式。</p>
+    </div>
+    <div class="card">
+      <h4>数学公式</h4>
+      <p>使用 KaTeX 渲染 LaTeX 数学公式，速度快效果好。</p>
+    </div>
+    <div class="card">
+      <h4>代码高亮</h4>
+      <p>基于 Prism.js，支持 Python、C、Java、HTML 等多种语言。</p>
+    </div>
+    <div class="card">
+      <h4>自由布局</h4>
+      <p>CSS Grid 提供灵活的页面排版能力，不受 LaTeX 限制。</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>三栏分栏</h2>
+  <div class="split-3">
+    <div>
+      <div class="block block-normal">
+        <div class="block-title">第一栏</div>
+        <div class="block-body">可以放置任意内容，包括文字、图片、列表等。</div>
+      </div>
+    </div>
+    <div>
+      <div class="block block-alert">
+        <div class="block-title">第二栏</div>
+        <div class="block-body">每栏独立，互不影响，适合对比展示。</div>
+      </div>
+    </div>
+    <div>
+      <div class="block block-example">
+        <div class="block-title">第三栏</div>
+        <div class="block-body">三栏布局在学术论文中常用于方法对比。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>提示框与自定义样式</h2>
+  <div class="split-50">
+    <div>
+      <div class="simple-box">
+        <strong>简单提示框 (simple-box)：</strong>使用绿色边框，适合一般性提示。
+      </div>
+      <div class="alert-box" style="margin-top:10px;">
+        <strong>警告提示框 (alert-box)：</strong>使用红色边框，适合重要警告。
+      </div>
+      <div class="success-box" style="margin-top:10px;">
+        <strong>成功提示框 (success-box)：</strong>使用黑色边框，适合强调结论。
+      </div>
+    </div>
+    <div>
+      <div class="block block-normal">
+        <div class="block-title">自定义说明</div>
+        <div class="block-body">
+          <ul>
+            <li>可通过内联 <code>style</code> 属性微调边距、字体大小等</li>
+            <li>支持嵌套 block 与布局组合</li>
+            <li>水印可通过 <code>no-watermark</code> 类单独控制</li>
+            <li>顶栏/底栏可通过 <code>no-header</code> / <code>no-footer</code> 隐藏</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="高级功能">
+  <h2>多列参考文献</h2>
+  <ol style="font-size:0.6em; line-height:1.45; column-count:2; column-gap:48px; margin:4px 0; overflow:hidden;">
+    <li style="break-inside:avoid; margin-bottom:2px;">Albert Einstein. <em>On the Electrodynamics of Moving Bodies</em>. Annalen der Physik, 1905.</li>
+    <li style="break-inside:avoid; margin-bottom:2px;">Presentaci&oacute;n UNAL. <a href="https://www.overleaf.com/latex/templates/presentacion-unal/nzfkbkgnctfp">Overleaf Template</a>.</li>
+    <li style="break-inside:avoid; margin-bottom:2px;">Nelson Cheung. SYSU HTML PPT Template. <a href="https://github.com/NelsonCheung-cn/sysu-html-ppt-template">GitHub</a>.</li>
+    <li style="break-inside:avoid; margin-bottom:2px;">Yixin Chen. SYSU Beamer Template. <a href="https://github.com/yxnchen/sysu-beamer-template">GitHub</a>.</li>
+  </ol>
+</div>

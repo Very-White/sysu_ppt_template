@@ -1,0 +1,150 @@
+<div class="slide no-header no-footer" data-section-title="使用举例">
+  <div class="slide-section-divider">
+    <div class="section-number">02</div>
+    <h1>使用举例</h1>
+  </div>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>Blocks</h2>
+
+  <div class="block block-normal">
+    <div class="block-title">普通区块 (block-normal)</div>
+    <div class="block-body">
+      <ol>
+        <li><a href="https://www.latexstudio.net/">LaTeX Studio</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="block block-alert">
+    <div class="block-title">警告区块 (block-alert)</div>
+    <div class="block-body">
+      <ol>
+        <li><a href="https://tex.stackexchange.com/">LaTeX Stack Exchange</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="block block-example">
+    <div class="block-title">示例区块 (block-example)</div>
+    <div class="block-body">
+      <ol>
+        <li><a href="https://tex.stackexchange.com/">LaTeX Stack Exchange</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>表格</h2>
+  <ul>
+    <li>LaTeX 广泛用于学术界，期刊会议论文模板</li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Microsoft<sup>&reg;</sup> Word</th>
+        <th>LaTeX</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>文字处理工具</td><td>专业排版软件</td></tr>
+      <tr><td>容易上手，简单直观</td><td>容易上手</td></tr>
+      <tr><td>所见即所得</td><td>所见即所想，所想即所得</td></tr>
+      <tr><td>高级功能不易掌握</td><td>进阶难，但一般用不到</td></tr>
+      <tr><td>处理长文档需要丰富经验</td><td>和短文档处理基本无异</td></tr>
+      <tr><td>花费大量时间调格式</td><td>无需担心格式，专心作者内容</td></tr>
+      <tr><td>公式排版差强人意</td><td>尤其擅长公式排版</td></tr>
+      <tr><td>二进制格式，兼容性差</td><td>文本文件，易读、稳定</td></tr>
+      <tr><td>付费商业许可</td><td>自由免费使用</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>图片</h2>
+  <figure>
+    <img src="libs/sysu_big_logo.jpeg" alt="Logo of SYSU">
+    <figcaption>图：Logo of SYSU</figcaption>
+    <div class="source">来源：Nelson Cheung</div>
+  </figure>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>数学公式</h2>
+  <div class="math math-display">J(\theta) = \mathbb{E}_{\pi_\theta}[G_t] = \sum_{s\in\mathcal{S}} d^\pi (s)V^\pi(s)=\sum_{s\in\mathcal{S}} d^\pi(s)\sum_{a\in\mathcal{A}}\pi_\theta(a|s)Q^\pi(s,a)</div>
+
+  <div class="math math-display">\begin{align} Q_\mathrm{target}&amp;=r+\gamma Q^\pi(s^\prime, \pi_\theta(s^\prime)+\epsilon)\\ \epsilon&amp;\sim\mathrm{clip}(\mathcal{N}(0, \sigma), -c, c)\nonumber \end{align}</div>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>数学公式</h2>
+  <div class="block block-example">
+    <div class="block-title">编号多行公式</div>
+    <div class="block-body">
+      <div class="math math-display">A=\lim_{n\rightarrow\infty}\Delta x\left(a^{2}+\left(a^{2}+2a\Delta x+\left(\Delta x\right)^{2}\right)\right. \\ +\left(a^{2}+2\cdot2a\Delta x+2^{2}\left(\Delta x\right)^{2}\right) \\ +\left(a^{2}+2\cdot3a\Delta x+3^{2}\left(\Delta x\right)^{2}\right) \\ +\ldots \\ \left.+\left(a^{2}+2\cdot(n-1)a\Delta x+(n-1)^{2}\left(\Delta x\right)^{2}\right)\right) \\ =\frac{1}{3}\left(b^{3}-a^{3}\right)</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>伪代码</h2>
+  <div class="algorithm-box">
+    <div class="algo-title">Algorithm Example</div>
+    <div class="algo-line"><span class="algo-keyword">Input:</span> x: float, y: float</div>
+    <div class="algo-line"><span class="algo-keyword">Output:</span> r: float</div>
+    <div class="algo-line"><span class="algo-keyword">While</span> True <span class="algo-keyword">do</span></div>
+    <div class="algo-line" style="padding-left:20px;">r = x + y;</div>
+    <div class="algo-line" style="padding-left:20px;"><span class="algo-keyword">If</span> r &gt;= 30 <span class="algo-keyword">then</span></div>
+    <div class="algo-line" style="padding-left:40px;">"do something"</div>
+    <div class="algo-line" style="padding-left:40px;"><span class="algo-keyword">break</span>;</div>
+    <div class="algo-line" style="padding-left:20px;"><span class="algo-keyword">else</span></div>
+    <div class="algo-line" style="padding-left:40px;">"do nothing"</div>
+    <div class="algo-line" style="padding-left:20px;"><span class="algo-keyword">end if</span></div>
+    <div class="algo-line"><span class="algo-keyword">end while</span></div>
+  </div>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>真实代码 - Python</h2>
+  <pre><code class="language-python">def hello_world():
+    """A simple hello world example."""
+    print("Hello, World!")
+    return True
+
+if __name__ == "__main__":
+    hello_world()</code></pre>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>真实代码 - C</h2>
+  <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>真实代码 - Java</h2>
+  <pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+</div>
+
+<div class="slide" data-section-title="使用举例">
+  <h2>真实代码 - HTML</h2>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>

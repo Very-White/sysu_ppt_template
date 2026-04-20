@@ -6,10 +6,12 @@
 
 ## 核心文件
 
-- `index.html` — PPT 主体，所有 slide 定义在此文件
+- `index.html` — PPT 入口（配置与脚本引用）
+- `sections/*.html` — 各章节幻灯片内容（由 `section-loader.js` 加载）
 - `css/sysu-theme.css` — 主题样式（颜色、字体、母版元素、各类组件）
 - `css/sysu-layouts.css` — 布局工具类（分栏、卡片、图文混排）
 - `js/sysu-slide.js` — 幻灯片引擎（导航、缩放、母版注入、KaTeX 渲染）
+- `js/section-loader.js` — 分文件加载器（需 HTTP 服务器，不可直接 file:// 打开）
 - `export_to_pptx.py` — 导出脚本（Playwright 截图 + python-pptx 生成 PPTX）
 - `requirements.txt` — 导出脚本的 Python 依赖
 
@@ -49,8 +51,7 @@
 
 ## 导出
 
-- PDF：`Ctrl+P` 打印为 PDF，每张 slide 自动分页
-- PPTX：运行 `python export_to_pptx.py`，使用 Playwright 逐页截图 + python-pptx 生成 16:9 PPTX（每页为静态图片）
+- PPTX：运行 `python export_to_pptx.py`，使用 Playwright 逐页截图 + python-pptx 生成 16:9 PPTX（每页为静态图片，**不支持动画效果**）
   - 环境准备：`conda create -n sysu-ppt-export python=3.11`，然后 `pip install -r requirements.txt`
   - 脚本使用系统 Edge（`channel="msedge"`），通过键盘事件翻页以保留进度条/水印等母版元素
   - 水印通过克隆到当前 slide 内部 + 层叠上下文（`z-index: 0` / `-1`）实现在正文下方显示

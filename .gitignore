@@ -3,6 +3,5 @@ node_modules/
 Thumbs.db
 *.swp
 *.swo
-test-section.html
-SYSU-beamer-template-main/
+.vscode/
 output*.pptx

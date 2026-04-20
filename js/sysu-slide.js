@@ -17,6 +17,9 @@
   };
 
   function init() {
+    if (window.__sysuSlideInitialized) return;
+    window.__sysuSlideInitialized = true;
+
     const deck = document.getElementById('slide-deck');
     if (!deck) return;
     slides = Array.from(deck.querySelectorAll('.slide'));
@@ -123,6 +126,7 @@
     currentSlide = index;
     updateHeader();
     updateProgress();
+    updateWatermark();
     highlightTOC();
     try { localStorage.setItem(STORAGE_KEY, index); } catch (e) { /* ignore */ }
   }
@@ -157,13 +161,22 @@
     });
   }
 
+  function updateWatermark() {
+    var wm = document.querySelector('.sysu-watermark');
+    if (!wm) return;
+    var slide = slides[currentSlide];
+    wm.style.display = slide && slide.classList.contains('no-watermark') ? 'none' : '';
+  }
+
   function highlightTOC() {
     var tocSlides = document.querySelectorAll('.slide-toc');
+    var currentSlideEl = slides[currentSlide];
+    var currentSection = currentSlideEl ? currentSlideEl.getAttribute('data-section-title') : '';
     tocSlides.forEach(function (tocSlide) {
       var items = tocSlide.querySelectorAll('.toc-list li');
-      items.forEach(function (item, idx) {
+      items.forEach(function (item) {
         item.classList.remove('current');
-        if (idx + 1 === currentSlide || (idx === items.length - 1 && currentSlide > items.length)) {
+        if (currentSection && item.textContent.trim() === currentSection.trim()) {
           item.classList.add('current');
         }
       });
@@ -271,6 +284,8 @@
       showSlide(currentSlide, false);
     }
   }
+
+  window.sysuSlideInit = init;
 
   document.addEventListener('DOMContentLoaded', init);
 })();
