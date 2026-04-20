@@ -6,7 +6,7 @@
 
 ## 效果演示
 
-<video src="演示.mp4" autoplay loop muted playsinline width="100%"></video>
+https://github.com/user-attachments/assets/8ad66840-1076-4f98-b08e-b432a458360d
 
 ## 快速开始
 
