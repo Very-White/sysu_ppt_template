@@ -38,7 +38,6 @@ python -m http.server 8000
 ├── libs/                 # 图片资源（logo 等）
 ├── export_to_pptx.py     # PPTX 导出脚本
 ├── requirements.txt      # Python 依赖
-├── 演示.mp4              # 效果演示视频
 └── README.md
 ```
 
