@@ -38,7 +38,6 @@ python -m http.server 8000
 ├── libs/                 # 图片资源（logo 等）
 ├── export_to_pptx.py     # PPTX 导出脚本
 ├── requirements.txt      # Python 依赖
-├── 演示.mp4              # 效果演示视频
 └── README.md
 ```
 
@@ -122,10 +121,29 @@ python -m http.server 8000
 
 三种风格：`block-normal`（绿）、`block-alert`（红）、`block-example`（深绿）。
 
+### 图片
+
+```html
+<figure>
+  <img src="libs/example.png" alt="示例图片">
+  <figcaption>图注文字</figcaption>
+</figure>
+```
+
+`<figcaption>` 作为图注，`.source` 可标注来源。
+
 ### 数学公式
+
+块级公式：
 
 ```html
 <div class="math math-display">E = mc^2</div>
+```
+
+行内公式：
+
+```html
+<p>质能方程 <span class="math">E = mc^2</span> 由爱因斯坦提出。</p>
 ```
 
 使用 KaTeX 渲染，支持标准 LaTeX 语法。

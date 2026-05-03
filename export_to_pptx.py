@@ -11,6 +11,9 @@ import os
 import sys
 import tempfile
 import shutil
+import threading
+import http.server
+import socketserver
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -22,17 +25,50 @@ SLIDE_WIDTH = 1280
 SLIDE_HEIGHT = 720
 
 
+def _find_free_port():
+    with socketserver.TCPServer(("", 0), None) as s:
+        return s.server_address[1]
+
+
+def _start_server(directory: str, port: int):
+    handler = http.server.SimpleHTTPRequestHandler
+    os.chdir(directory)
+    server = socketserver.TCPServer(("", port), handler)
+    server.serve_forever()
+
+
 def capture_slides(html_path: str, output_dir: str):
     html_path = os.path.abspath(html_path)
     if not os.path.isfile(html_path):
         print(f"错误：找不到文件 {html_path}")
         sys.exit(1)
 
-    file_url = Path(html_path).as_uri()
+    html_dir = os.path.dirname(html_path)
+    html_file = os.path.basename(html_path)
+
+    port = _find_free_port()
+    server_thread = threading.Thread(
+        target=_start_server, args=(html_dir, port), daemon=True
+    )
+    server_thread.start()
+
+    file_url = f"http://localhost:{port}/{html_file}"
+    print(f"本地 HTTP 服务器已启动: {file_url}")
+
     screenshots = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(channel="msedge")
+        browser = None
+        for ch in ("msedge", "chrome"):
+            try:
+                browser = p.chromium.launch(channel=ch)
+                print(f"使用系统 {ch}")
+                break
+            except Exception:
+                continue
+        if browser is None:
+            browser = p.chromium.launch()
+            print("使用 Playwright 内置 Chromium")
         page = browser.new_page(
             viewport={"width": SLIDE_WIDTH, "height": SLIDE_HEIGHT},
             device_scale_factor=2,
@@ -65,28 +101,6 @@ def capture_slides(html_path: str, output_dir: str):
             if i > 0:
                 page.keyboard.press("ArrowRight")
                 page.wait_for_timeout(500)
-
-            page.evaluate(
-                "() => {"
-                "  const old = document.querySelector('.slide .watermark-clone');"
-                "  if (old) old.remove();"
-                "  const wm = document.querySelector('.sysu-watermark');"
-                "  if (!wm) return;"
-                "  const visible = document.querySelector('#slide-deck .slide[style*=\"flex\"]');"
-                "  if (!visible) return;"
-                "  visible.style.position = 'relative';"
-                "  visible.style.zIndex = '0';"
-                "  const clone = wm.cloneNode(true);"
-                "  clone.classList.add('watermark-clone');"
-                "  clone.style.position = 'absolute';"
-                "  clone.style.bottom = '36px';"
-                "  clone.style.left = '20px';"
-                "  clone.style.zIndex = '-1';"
-                "  clone.style.opacity = '0.8';"
-                "  clone.style.pointerEvents = 'none';"
-                "  visible.appendChild(clone);"
-                "}"
-            )
 
             deck = page.locator("#slide-deck")
 

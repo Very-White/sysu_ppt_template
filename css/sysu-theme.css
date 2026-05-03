@@ -40,7 +40,10 @@ body {
 #slide-deck {
   width: 1280px;
   height: 720px;
-  background: var(--sysu-white);
+  background-color: var(--sysu-white);
+  background-repeat: no-repeat;
+  background-position: left 20px bottom 36px;
+  background-size: auto 110px;
   position: relative;
   overflow: hidden;
   text-align: left;
@@ -64,6 +67,26 @@ body {
 
 .slide.active {
   display: flex;
+}
+
+.slide > * {
+  min-height: 0;
+  flex-shrink: 1;
+}
+
+.slide figure {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.slide figure img {
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -127,7 +150,7 @@ li::marker {
 }
 
 .slide-title-page .title-logo {
-  height: 80px;
+  height: 240px;
   margin-bottom: 30px;
 }
 
@@ -189,6 +212,10 @@ li::marker {
    Section Divider (章节页)
    ═══════════════════════════════════════════════════════════════ */
 
+.slide.no-header.no-footer {
+  padding: 60px;
+}
+
 .slide-section-divider {
   display: flex;
   flex-direction: column;
@@ -197,7 +224,7 @@ li::marker {
   text-align: center;
   width: calc(100% + 120px);
   height: 50%;
-  margin-top: 10%;
+  margin-top: auto;
   margin-bottom: auto;
   margin-left: -60px;
   background: var(--sysu-green);
@@ -468,7 +495,7 @@ pre code {
   top: 0;
   left: 0;
   width: 100%;
-  height: 45px;
+  height: 50px;
   background: var(--sysu-black);
   z-index: 101;
   display: flex;
@@ -535,18 +562,7 @@ pre code {
    Watermark
    ═══════════════════════════════════════════════════════════════ */
 
-.sysu-watermark {
-  position: absolute;
-  bottom: 36px;
-  left: 20px;
-  z-index: -1;
-  opacity: 0.8;
-  pointer-events: none;
-}
 
-.sysu-watermark img {
-  height: 110px;
-}
 
 /* ═══════════════════════════════════════════════════════════════
    Footnote

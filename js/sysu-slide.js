@@ -93,10 +93,7 @@
     deck.appendChild(progress);
 
     if (config.watermark) {
-      const wm = document.createElement('div');
-      wm.className = 'sysu-watermark';
-      wm.innerHTML = '<img src="' + config.logo + '" alt="logo">';
-      deck.appendChild(wm);
+      deck.style.backgroundImage = 'url("' + config.logo + '")';
     }
   }
 
@@ -162,10 +159,12 @@
   }
 
   function updateWatermark() {
-    var wm = document.querySelector('.sysu-watermark');
-    if (!wm) return;
+    var deck = document.getElementById('slide-deck');
+    if (!deck || !config.watermark) return;
     var slide = slides[currentSlide];
-    wm.style.display = slide && slide.classList.contains('no-watermark') ? 'none' : '';
+    deck.style.backgroundImage = slide && slide.classList.contains('no-watermark')
+      ? 'none'
+      : 'url("' + config.logo + '")';
   }
 
   function highlightTOC() {
