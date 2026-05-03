@@ -5,3 +5,4 @@ Thumbs.db
 *.swo
 .vscode/
 output*.pptx
+__pycache__/
