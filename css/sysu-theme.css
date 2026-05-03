@@ -40,7 +40,10 @@ body {
 #slide-deck {
   width: 1280px;
   height: 720px;
-  background: var(--sysu-white);
+  background-color: var(--sysu-white);
+  background-repeat: no-repeat;
+  background-position: left 20px bottom 36px;
+  background-size: auto 110px;
   position: relative;
   overflow: hidden;
   text-align: left;
@@ -127,7 +130,7 @@ li::marker {
 }
 
 .slide-title-page .title-logo {
-  height: 80px;
+  height: 240px;
   margin-bottom: 30px;
 }
 
@@ -535,18 +538,7 @@ pre code {
    Watermark
    ═══════════════════════════════════════════════════════════════ */
 
-.sysu-watermark {
-  position: absolute;
-  bottom: 36px;
-  left: 20px;
-  z-index: -1;
-  opacity: 0.8;
-  pointer-events: none;
-}
 
-.sysu-watermark img {
-  height: 110px;
-}
 
 /* ═══════════════════════════════════════════════════════════════
    Footnote

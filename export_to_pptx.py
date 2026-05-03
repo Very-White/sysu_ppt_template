@@ -102,28 +102,6 @@ def capture_slides(html_path: str, output_dir: str):
                 page.keyboard.press("ArrowRight")
                 page.wait_for_timeout(500)
 
-            page.evaluate(
-                "() => {"
-                "  const old = document.querySelector('.slide .watermark-clone');"
-                "  if (old) old.remove();"
-                "  const wm = document.querySelector('.sysu-watermark');"
-                "  if (!wm) return;"
-                "  const visible = document.querySelector('#slide-deck .slide[style*=\"flex\"]');"
-                "  if (!visible) return;"
-                "  visible.style.position = 'relative';"
-                "  visible.style.zIndex = '0';"
-                "  const clone = wm.cloneNode(true);"
-                "  clone.classList.add('watermark-clone');"
-                "  clone.style.position = 'absolute';"
-                "  clone.style.bottom = '36px';"
-                "  clone.style.left = '20px';"
-                "  clone.style.zIndex = '-1';"
-                "  clone.style.opacity = '0.8';"
-                "  clone.style.pointerEvents = 'none';"
-                "  visible.appendChild(clone);"
-                "}"
-            )
-
             deck = page.locator("#slide-deck")
 
             filename = os.path.join(output_dir, f"slide_{i:03d}.png")
